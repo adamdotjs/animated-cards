@@ -1,0 +1,140 @@
+/* variables */
+:root {
+	--font-sans: 'Rubik', sans-serif;
+	--font-mono: 'IBM Plex Mono', monospace;
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: var(--font-mono);
+	font-size: 1.6rem;
+	line-height: 1.5;
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	background: hsl(167, 54%, 46%);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* general styling */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: var(--font-sans);
+}
+
+h2 {
+	font-size: 2.8rem;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+}
+
+/* container */
+.card-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 5rem 10rem;
+	width: 100%;
+}
+
+/* card styling */
+.card {
+	background: hsl(0, 33%, 100%);
+	width: 35rem;
+	height: 250px;
+	padding: 2rem;
+	box-shadow: inset 0px 0px 14px rgba(0, 0, 0, 0.05);
+	border-radius: 0.5em;
+	cursor: pointer;
+	position: relative;
+	transition: height 400ms;
+	transition-delay: 300ms;
+	will-change: contents;
+}
+
+.card h2 {
+	position: absolute;
+	right: calc(0% + 2rem);
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+	text-align: right;
+}
+
+.card img {
+	margin-top: 4rem;
+	mix-blend-mode: multiply;
+	transform: translateX(-10rem);
+	transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.card ul {
+	list-style: none;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-left: 2rem;
+}
+
+.card-caption {
+	opacity: 0;
+	height: 0;
+	position: relative;
+}
+
+.card-caption > * + * {
+	margin-top: 1rem;
+}
+
+.card-caption::after {
+	content: '\2192';
+	font-size: 3rem;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.card-price {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.card:hover {
+	height: 480px;
+}
+
+.card:hover h2 {
+	right: calc(100% - 2rem);
+	text-align: left;
+	transform: translateX(100%);
+}
+
+.card:hover.card img {
+	transform: translateX(0);
+}
+
+.card:hover .card-caption {
+	opacity: 1;
+	height: auto;
+	transition: all 400ms;
+	transition-delay: 500ms;
+}
